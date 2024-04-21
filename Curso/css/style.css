@@ -3,10 +3,12 @@ body {
     font-family: 'poppins', sans-serif;
 }
 header, footer {
+    width: 400px;
     text-align: center;
     margin: 30px auto 0px auto;
 }
 main {
+    width: 400px;
     text-align: center;
     margin: 30px auto 0px auto;
 }
