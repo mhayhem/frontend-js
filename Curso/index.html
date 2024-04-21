@@ -18,8 +18,12 @@
         <form action="#">
             <div class="itemForm">
                 <label for="Nick">Nick de usuario</label>
-                <input type="text" name="nick" value="@" id="nicka" readonly>
+                <input type="text" name="nick" value="@" id="nicka" required readonly>
                 <input type="text" name="nick" id="nick">
+            </div>
+            <div class="itemForm">
+                <label for="email">Introduzca su Email</label>
+                <input type="email" name="email" id="email" required>
             </div>
             <div class="itemForm">
                 <label for="size">Tamaño de juego</label>
@@ -39,6 +43,6 @@
     <footer>
         <p>Curso FrontEnd con HTML, CSS y JS</p>
     </footer>
-    
+    <script src="./js/app.js"></script>
 </body>
 </html>
