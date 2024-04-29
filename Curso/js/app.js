@@ -1,7 +1,27 @@
-var heigth = 165;
-var weight = 60;
-var weightB = weight + 10;
+// created const
 
-for (let heigth; heigth < 195; heigth + 5) {
-    console.log(heigth);
+const nickInput = document.getElementById('nick');
+const sizeInput = document.getElementById('size');
+const formElement = document.getElementById('formElement');
+
+// events function 
+
+function formCheck(event) {
+    if (nickInput.value.length == 0) {
+        console.log('No hay nick');
+        event.preventDefault();
+        nickInput.focus();
+        return false;
+    }
+    if (sizeInput.value == '0') {
+        console.log('No se ha seleccionado tamaño');
+        event.preventDefault();
+        sizeInput.focus();
+        return false;
+    }
+    return true;
 }
+
+// started event load
+
+formElement.addEventListener('submit', formCheck);
