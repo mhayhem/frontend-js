@@ -15,24 +15,30 @@
         <img src="./image/logo.png" alt="logo master dots">
     </header>
     <main>
+        <div>
+            <p id="error"></p>
+        </div>
         <form action="game.html" id="formElement">
             <div class="itemForm">
-                <label for="nick">Nick de usuario</label>
+                <label for="nick">Nick de usuario *</label>
                 <input type="text" name="nick" value="@" id="nicka" required readonly>
-                <input type="text" name="nick" id="nick">
+                <input type="text" name="nick" id="nick" required minlength="2">
             </div>
             <div class="itemForm">
                 <label for="email">Introduzca su Email</label>
                 <input type="email" name="email" id="email">
             </div>
             <div class="itemForm">
-                <label for="size">Tamaño de juego</label>
-                <select name="size" id="size">
+                <label for="size">Tamaño de juego *</label>
+                <select name="size" id="size" required>
                     <option value="0">-- Elige el tamaño del juego --</option>
                     <option value="1">4X4</option>
                     <option value="2">5X5</option>
                     <option value="3">6X6</option>nick
                 </select>
+            </div>
+            <div>
+                <p class="advice">* Obligatorio </p>
             </div>
             <div class="itemForm">
                 <input type="submit" value="Jugar">

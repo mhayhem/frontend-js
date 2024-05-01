@@ -75,3 +75,16 @@ select {
     font-weight: 200;
     font-size: 18px;
 }
+#error {
+    text-align: center;
+    font-weight: 300;
+    color: #fd0c49;
+    margin: 10px;
+}
+/* class */
+.advice {
+    text-align: start;
+    font-weight: 200;
+    font-size: 14px;
+
+}
