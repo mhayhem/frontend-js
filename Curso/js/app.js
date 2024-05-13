@@ -20,6 +20,7 @@ function formCheck(event) {
         sizeInput.focus();
         return false;
     }
+    userData(nick)
     return true;
 }
 
