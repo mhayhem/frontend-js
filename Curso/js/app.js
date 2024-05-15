@@ -14,6 +14,12 @@ function formCheck(event) {
         nickInput.focus();
         return false;
     }
+    if (nickInput.value.length == '0'){
+        event.preventDefault();
+        error.innerText='Rellene el campo nombre';
+        nickInput.focus();
+        return false;
+    }
     if (sizeInput.value == '0') {
         event.preventDefault();
         error.innerText='Seleccione un tamaño de juego';
