@@ -5,6 +5,12 @@ const sizeInput = document.getElementById('size');
 const formElement = document.getElementById('formElement');
 const error = document.getElementById('error');
 
+// check error in game.html
+if(sessionStorage.getItem('error') != null) {
+    error.innerText=sessionStorage.getItem('error');
+    sessionStorage.removeItem('error');
+}
+
 // events function 
 
 function formCheck(event) {
@@ -29,6 +35,7 @@ function formCheck(event) {
     userData(nick)
     return true;
 }
+
 
 // started event load
 
