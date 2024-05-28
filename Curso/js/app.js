@@ -32,7 +32,7 @@ function formCheck(event) {
         sizeInput.focus();
         return false;
     }
-    userData(nick, email);
+    userData(nick, size, geolocationTxt);
     historicUser(nick);
     return true;
 }
@@ -41,3 +41,7 @@ function formCheck(event) {
 // started event load
 
 formElement.addEventListener('submit', formCheck);
+
+// geolocation 
+
+geolocationData();
