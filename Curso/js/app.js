@@ -6,6 +6,11 @@ const formElement = document.getElementById('formElement');
 const error = document.getElementById('error');
 
 // check error in game.html
+/**
+ * Description
+ * @param {htmlEvent} sessionStorage.getItem('error')
+ * @returns {any}
+ */
 if(sessionStorage.getItem('error') != null) {
     error.innerText=sessionStorage.getItem('error');
     sessionStorage.removeItem('error');
@@ -13,6 +18,11 @@ if(sessionStorage.getItem('error') != null) {
 
 // events function 
 
+/**
+ * Description
+ * @param {htmlEvent} event 
+ * @returns {true}
+ */
 function formCheck(event) {
     if (nickInput.value.match(/(?<!\S)[0-9]/)) {
         event.preventDefault();
@@ -32,13 +42,14 @@ function formCheck(event) {
         sizeInput.focus();
         return false;
     }
-    userData(nick, size, geolocationTxt);
+    userData(nick, size, mail, geolocationTxt);
     historicUser(nick);
     return true;
 }
 
 
 // started event load
+
 
 formElement.addEventListener('submit', formCheck);
 

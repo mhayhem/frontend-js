@@ -1,15 +1,25 @@
+
 var geolocationTxt;
 
+/**
+ * Description
+ * @param {HTMLElement} nick user nick
+ * @param {HTMLElement} size size of dashboard
+ * @param {coords} geolocationTxt
+ * 
+ */
 
 // sessionStorage
 
-function userData(nick, size, geolocationTxt) {
+function userData(nick, size, email, geolocationTxt) {
     sessionStorage.setItem('nick', nick.value);
     sessionStorage.setItem('size', size.value);
+    sessionStorage.setItem('email', email.value);
     sessionStorage.setItem('geolocationTxt', geolocationTxt);
     
     
 }
+
 
 function getUserData() {
     nick = sessionStorage.getItem('nick');
@@ -18,6 +28,10 @@ function getUserData() {
     
 }
 
+/**
+ * Description
+ * @returns {boolean}
+ */
 function checkUserData () {
     if (nick == null) {
         sessionStorage.setItem('error', 'no se ha iniciado sesión');
@@ -28,6 +42,12 @@ function checkUserData () {
 
 // localStorage
 
+/**
+ * Description
+ * @param {HTMLElement} nick
+ * 
+ * 
+ */
 function historicUser (nick) {
     let historicUser = localStorage.getItem('historic');
     let historic;
@@ -44,6 +64,11 @@ function historicUser (nick) {
     historic.push(userLogin);
     localStorage.setItem('historic', JSON.stringify(historic));
 }
+
+/**
+ * Description
+ * @returns {any}
+ */
 
 function geolocationData () {
     if (!navigator.geolocation) {
