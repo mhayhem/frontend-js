@@ -1,35 +1,36 @@
 
 var geolocationTxt;
 
+
+
 /**
  * Description
- * @param {HTMLElement} nick user nick
- * @param {HTMLElement} size size of dashboard
- * @param {coords} geolocationTxt
+ * @param {HTMLElement} nick
+ * @param {HTMLElement} size
+ * @param {HTMLElement} email
+ * @param {} geolocationTxt
  * 
  */
-
-// sessionStorage
-
 function userData(nick, size, email, geolocationTxt) {
     sessionStorage.setItem('nick', nick.value);
     sessionStorage.setItem('size', size.value);
     sessionStorage.setItem('email', email.value);
     sessionStorage.setItem('geolocationTxt', geolocationTxt);
-    
-    
 }
 
 
+/**
+ * Description
+ * take user nick
+ */
 function getUserData() {
-    nick = sessionStorage.getItem('nick');
-    
-    
-    
+    nick = sessionStorage.getItem('nick');   
 }
 
 /**
  * Description
+ * 
+ * checking user nick is or not null
  * @returns {boolean}
  */
 function checkUserData () {
@@ -44,9 +45,9 @@ function checkUserData () {
 
 /**
  * Description
+ * 
+ * store info in localstorage
  * @param {HTMLElement} nick
- * 
- * 
  */
 function historicUser (nick) {
     let historicUser = localStorage.getItem('historic');
@@ -59,6 +60,7 @@ function historicUser (nick) {
     }
     let userLogin = {
         user: nick.value,
+        email: email.value,
         date: Date.now()
     }
     historic.push(userLogin);
@@ -67,7 +69,8 @@ function historicUser (nick) {
 
 /**
  * Description
- * @returns {any}
+ * 
+ * take geolocation
  */
 
 function geolocationData () {

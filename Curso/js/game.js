@@ -1,7 +1,7 @@
 
 // game code
 
-// catch user data
+// take user data
 getUserData();
 // check user data
 if (!checkUserData()) location="index.html";  

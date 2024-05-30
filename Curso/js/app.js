@@ -1,27 +1,18 @@
-// created const
+// created var
 
-const nickInput = document.getElementById('nick');
-const sizeInput = document.getElementById('size');
-const formElement = document.getElementById('formElement');
-const error = document.getElementById('error');
+var nickInput;
+var emailInput;
+var sizeInput;
+var formElement;
+var error;
 
-// check error in game.html
-/**
- * Description
- * @param {htmlEvent} sessionStorage.getItem('error')
- * @returns {any}
- */
-if(sessionStorage.getItem('error') != null) {
-    error.innerText=sessionStorage.getItem('error');
-    sessionStorage.removeItem('error');
-}
 
-// events function 
+// functions
 
 /**
  * Description
- * @param {htmlEvent} event 
- * @returns {true}
+ * @param {htmlEvent} event take infomation from form
+ * @returns {true} 
  */
 function formCheck(event) {
     if (nickInput.value.match(/(?<!\S)[0-9]/)) {
@@ -42,16 +33,36 @@ function formCheck(event) {
         sizeInput.focus();
         return false;
     }
-    userData(nick, size, mail, geolocationTxt);
+    userData(nick, size, email, geolocationTxt);
     historicUser(nick);
     return true;
+}
+
+/**
+ * Description
+ * load and check objects from form
+ */
+function loadDom() {
+    nickInput = document.getElementById('nick');
+    emailInput = document.getElementById('email');
+    sizeInput = document.getElementById('size');
+    formElement = document.getElementById('formElement');
+    error = document.getElementById('error');
+
+    // take errors in form
+    if(sessionStorage.getItem('error') != null) {
+        error.innerText=sessionStorage.getItem('error');
+        sessionStorage.removeItem('error');
+    }
+
+    formElement.addEventListener('submit', formCheck);
 }
 
 
 // started event load
 
+document.addEventListener('DOMContentLoaded', loadDom);
 
-formElement.addEventListener('submit', formCheck);
 
 // geolocation 
 
