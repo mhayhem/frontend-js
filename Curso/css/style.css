@@ -52,6 +52,7 @@ select {
     font-weight: 200;
     font-size: 18px;
 }
+img {width: 125px;}
 /* IDs */
 #nicka {
     float: left;
@@ -81,10 +82,42 @@ select {
     color: #fd0c49;
     margin: 10px;
 }
+#avatar {
+    float: left;
+}
+#avatarcontainer {
+    display: flex;
+    background-color: #fff;
+    border: solid 1px #fd0c49;
+    border-radius: 5px;
+    height: 125px;
+    width: 125px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+#avatargrid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 30px;
+}
 /* class */
 .advice {
     text-align: start;
     font-weight: 200;
     font-size: 14px;
 
+}
+.avatarImgItem {
+    background-color: #fff;
+    border: solid 1px #fd0c49;
+    border-radius: 5px;
+    height: 40px;
+    width: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    
 }

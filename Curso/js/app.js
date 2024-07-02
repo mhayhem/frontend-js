@@ -1,10 +1,13 @@
-// created var
+// init variables, objects & DOM    
 
 var nickInput;
 var emailInput;
 var sizeInput;
 var formElement;
 var error;
+var avatarItem;
+var itemImg;
+var avatarContainer;
 
 
 // functions
@@ -38,6 +41,15 @@ function formCheck(event) {
     return true;
 }
 
+function moveImg(event) {
+    itemImg = event.target;
+    console.log(itemImg.src);
+}
+
+function changeImg(event) {
+    avatarContainer.src = itemImg.src;
+}
+
 /**
  * Description
  * load and check objects from form
@@ -56,6 +68,17 @@ function loadDom() {
     }
 
     formElement.addEventListener('submit', formCheck);
+
+    // drag & drop events
+    avatarItem = document.getElementsByClassName('avatarImgItem');
+    // loop to identify item to drag
+    for (let item of avatarItem) {
+        item.addEventListener('dragstart', moveImg);
+    }
+    avatarContainer = document.getElementById('avatarImg');
+    avatarContainer.addEventListener('dragover', 
+        e => {e.preventDefault();})
+    avatarContainer.addEventListener('drop', changeImg);
 }
 
 
