@@ -1,5 +1,6 @@
 
 var geolocationTxt;
+var avatarImg;
 
 
 
@@ -11,10 +12,11 @@ var geolocationTxt;
  * @param {} geolocationTxt
  * 
  */
-function userData(nick, size, email, geolocationTxt) {
+function userData(nick, size, email, geolocationTxt, avatarContainer) {
     sessionStorage.setItem('nick', nick.value);
     sessionStorage.setItem('size', size.value);
     sessionStorage.setItem('email', email.value);
+    sessionStorage.setItem('avatarImg', avatarContainer.src);
     sessionStorage.setItem('geolocationTxt', geolocationTxt);
 }
 
@@ -24,7 +26,10 @@ function userData(nick, size, email, geolocationTxt) {
  * take user nick
  */
 function getUserData() {
-    nick = sessionStorage.getItem('nick');   
+    nick = sessionStorage.getItem('nick');
+    size = sessionStorage.getItem('size');
+    email = sessionStorage.getItem('email');
+    avatarImg = sessionStorage.getItem('avatarImg');
 }
 
 /**

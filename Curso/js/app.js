@@ -36,7 +36,7 @@ function formCheck(event) {
         sizeInput.focus();
         return false;
     }
-    userData(nick, size, email, geolocationTxt);
+    userData(nick, size, email, geolocationTxt, avatarContainer);
     historicUser(nick);
     return true;
 }
