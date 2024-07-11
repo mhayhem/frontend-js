@@ -1,6 +1,8 @@
 
-
 // game code
+
+// global var
+var initMark  = false;
 
 /**
  * Description
@@ -43,20 +45,58 @@ function scheduleGameEvents() {
     const items = document.getElementsByClassName('item');
     for (let item of items) {
         item.addEventListener('mousedown', startMark);
+        item.addEventListener('mouseover', continueMark)
     }
+    document.addEventListener('mouseup', markFinish)
 }
+
+/** mouseevent functions */
 /**
  * Description
- * @param {event} 
- * star to mark the dots
+ * @param {MouseEvent} event
+ * algoritme to functios of mark dots
  */
-function startMark(event) {
+function toMark(event) {
     let item = event.target;
     let containerItem = event.target.parentElement;
     if (item.classList.contains("red")) containerItem.classList.add("red");
     else if (item.classList.contains("blue")) containerItem.classList.add("blue");
     else containerItem.classList.add("green");
+    if (!initMark) initMark  = true;
+    
 }
+/**
+ * Description
+ * @param {MouseEvent}  event
+ * star to mark the dots
+ */
+function startMark(event) {
+    toMark(event);
+}
+
+/**
+ * Description
+ * @param {MouseEvent} event
+ * continue  mark the dots
+ */
+function continueMark(event) {
+    if (initMark) {
+        toMark(event);
+    }
+}
+
+/**
+ * Description
+ * @param {MouseEvent} event
+ * mark finish
+ */
+function markFinish (event) {
+    initMark = false;
+}
+
+
+
+
 // take user data
 getUserData();
 // check user data
