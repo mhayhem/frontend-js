@@ -5,6 +5,8 @@
 var initMark  = false;
 var adjacent = [];
 var panelSize;
+var markClass;
+var errorColor = document.getElementById('errorColor');
 
 /**
  * Description
@@ -53,31 +55,33 @@ function scheduleGameEvents() {
     document.addEventListener('mouseup', endMarking)
 }
 
-/** mouse event functions */
-/**
- * Description
- * @param {MouseEvent} event
- * algoritme to functios of mark dots
- */
-function toMark(event) {
-    let item = event.target;
-    let containerItem = event.target.parentElement;
-    if (item.classList.contains("red")) containerItem.classList.add("red");
-    else if (item.classList.contains("blue")) containerItem.classList.add("blue");
-    else containerItem.classList.add("green");
-    if (!initMark) initMark  = true;
-
-    // test
-        calculateAdjacent(parseInt(item.id));
-    
-}
 /**
  * Description
  * @param {MouseEvent}  event
  * star to mark the dots
  */
 function startMarking(event) {
-    toMark(event);
+    let item = event.target;
+    let containerItem = event.target.parentElement;
+    let newId= parseInt(item.id);
+    
+    if (item.classList.contains("red")) {
+        markClass = 'red';
+        containerItem.classList.add("red");
+    }
+    else if (item.classList.contains("blue")) {
+        markClass = 'blue';
+        containerItem.classList.add("blue");
+    }
+    else {
+        markClass = 'green';
+        containerItem.classList.add("green");
+    }
+    if (!initMark) initMark  = true;
+
+    // calculate adjacent
+    calculateAdjacent(parseInt(item.id));
+    
 }
 
 /**
@@ -86,19 +90,37 @@ function startMarking(event) {
  * continue  mark the dots
  */
 function continueMarking(event) {
+    let item = event.target;
+    let containerItem = event.target.parentElement;
+    let newId = parseInt(item.id);
     if (initMark) {
-        toMark(event);
+        errorColor.innerText = '';
+        if (adjacent.includes(newId) && item.classList.contains(markClass)) {
+                if (item.classList.contains("red")) containerItem.classList.add("red");
+                else if (item.classList.contains("blue")) containerItem.classList.add("blue");
+                else containerItem.classList.add("green");
+                calculateAdjacent(parseInt(item.id));
+                console.log(markClass);
+        }
+        // error massege from diferent dot color
+        else {
+            if (adjacent.includes(newId) !== markClass) {
+            errorColor.innerText = 'Has tocado un color equivocado, se te restaran 2 puntos';
+            initMark = false;
+            console.log('errrorrrrrrrrrrrrrrrrrrr');
+            }
+        }
     }
 }
 
 /**
  * Description
- * @param {MouseEvent} event
- * mark finish
+ * mark ending
  */
-function endMarking (event) {
+function endMarking() {
     initMark = false;
 }
+
 
 /**
  * Description
@@ -120,6 +142,7 @@ function calculateAdjacent(idMarked) {
         
     }
 }
+
 
 
 
