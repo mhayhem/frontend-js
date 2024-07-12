@@ -3,11 +3,13 @@
 
 // global var
 var initMark  = false;
+var adjacent = [];
+var panelSize;
 
 /**
  * Description
  * @param {int} max
- * @returns {int} random number
+ * 
  */
 function getRamdomInt(max) {
     return Math.floor(Math.random() * max);
@@ -19,6 +21,7 @@ function getRamdomInt(max) {
 function fillUserForm() {
     document.getElementById('nick').value=nick;
     document.getElementById('avatarImg').src=avatarImg;
+    panelSize = parseInt(size);
 }
 /**
  * Description
@@ -33,24 +36,24 @@ function displayGameLayout() {
     let colorRdm = 0;
     for (let index = 0; index < (parseInt(size)*parseInt(size)); index++) {
         if (index % 2 > 0) colorRdm = getRamdomInt(3);
-        items+=`<div class="containerItem"><div class="item ${color[colorRdm]}"></div></div>`;
+        items+=`<div class="containerItem"><div id="${index}" class="item ${color[colorRdm]}"></div></div>`;
     }
     document.getElementById('game').innerHTML=items;
 }
 /**
  * Description
- * start the mouse down event
+ * catch the mouse down event
  */
 function scheduleGameEvents() {
     const items = document.getElementsByClassName('item');
     for (let item of items) {
-        item.addEventListener('mousedown', startMark);
-        item.addEventListener('mouseover', continueMark)
+        item.addEventListener('mousedown', startMarking);
+        item.addEventListener('mouseover', continueMarking)
     }
-    document.addEventListener('mouseup', markFinish)
+    document.addEventListener('mouseup', endMarking)
 }
 
-/** mouseevent functions */
+/** mouse event functions */
 /**
  * Description
  * @param {MouseEvent} event
@@ -63,6 +66,9 @@ function toMark(event) {
     else if (item.classList.contains("blue")) containerItem.classList.add("blue");
     else containerItem.classList.add("green");
     if (!initMark) initMark  = true;
+
+    // test
+        calculateAdjacent(parseInt(item.id));
     
 }
 /**
@@ -70,7 +76,7 @@ function toMark(event) {
  * @param {MouseEvent}  event
  * star to mark the dots
  */
-function startMark(event) {
+function startMarking(event) {
     toMark(event);
 }
 
@@ -79,7 +85,7 @@ function startMark(event) {
  * @param {MouseEvent} event
  * continue  mark the dots
  */
-function continueMark(event) {
+function continueMarking(event) {
     if (initMark) {
         toMark(event);
     }
@@ -90,10 +96,30 @@ function continueMark(event) {
  * @param {MouseEvent} event
  * mark finish
  */
-function markFinish (event) {
+function endMarking (event) {
     initMark = false;
 }
 
+/**
+ * Description
+ * @param {any} idMarked
+ * calculate the dot adjacent from marked dot
+ */
+function calculateAdjacent(idMarked) {
+    adjacent = [];
+    // top adjacent
+    if((idMarked - panelSize) >= 0) adjacent.push(idMarked - panelSize);
+    // bottom adjacent
+    if ((idMarked + panelSize) < (panelSize * panelSize)) adjacent.push(idMarked + panelSize);
+    // right adjacent
+    if (((idMarked + 1)  % panelSize !== 0)) adjacent.push(idMarked + 1);
+    // left adjacent
+    if ((idMarked  % panelSize !== 0)) adjacent.push(idMarked - 1); 
+    for (let index = 0; index < adjacent.length; index++) {
+        console.log(adjacent[index]);
+        
+    }
+}
 
 
 
