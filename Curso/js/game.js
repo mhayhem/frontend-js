@@ -46,7 +46,11 @@ function displayGameLayout() {
         if (index % 2 > 0) colorRdm = getRamdomInt(3);
         items+=`<div class="containerItem"><div id="${index}" class="item ${color[colorRdm]}"></div></div>`;
     }
-    document.getElementById('game').innerHTML=items;
+    document.getElementById('game').innerHTML=items;  
+    // change margin-top to gameTitle when de size are 6x6
+    if (size == '6') {
+        document.getElementById('gameTitle').style.marginTop = '450px';
+    }
 }
 /**
  * Description
@@ -200,7 +204,10 @@ function countDown() {
             item.removeEventListener('mouseover', continueMarking);
         }
         document.removeEventListener('mouseup', endMarking);
-        message.innerText = `Partida finalizada\n puntuación: ${score.value}`;
+        // change z-index from panels
+        document.getElementById('endGame').style.zIndex = '2';
+        document.getElementById('game').style.zIndex = '1';
+        document.getElementById('newGame').addEventListener('click', (e) => location.reload());
     }
 }
 

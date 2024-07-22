@@ -93,6 +93,8 @@ width: 230px;
     margin-right: 10px;
 }
 #game {
+    position: absolute;
+    z-index: 2;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -104,7 +106,29 @@ width: 230px;
     border: 1px solid #ced4ca;
     border-radius: 5px 5px 0px 0px;
 }
+#endGame {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    width: 500px;
+    min-height: 40px;
+    justify-content: center;
+    align-items: center;
+    background-color: #263238;
+    border: 1px solid #ced4ca;
+    border-radius: 5px 5px 0px 0px;
+}
+#newGame {
+    background-color: #fff;
+    border: 1px solid #ced4ca;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font: 400 14px 'poppins', sans-serif;
+    border-radius: 5px;
+    width: 200px;
+}
 #gameTitle {
+    margin-top: 400px;
     width: 500px;
     background-color: #263238;
     border: 1px solid #ced4ca;
