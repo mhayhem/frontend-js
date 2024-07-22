@@ -3,6 +3,7 @@
 var nickInput;
 var emailInput;
 var sizeInput;
+var timeInput;
 var formElement;
 var error;
 var avatarItem;
@@ -36,7 +37,13 @@ function formCheck(event) {
         sizeInput.focus();
         return false;
     }
-    userData(nick, size, email, geolocationTxt, avatarContainer);
+    if (timeInput.value == '0') {
+        event.preventDefault();
+        error.innerText='Seleccione un tiempo de juego';
+        sizeInput.focus();
+        return false;
+    }
+    userData(nick, size, email, time, geolocationTxt, avatarContainer);
     historicUser(nick);
     return true;
 }
@@ -58,6 +65,7 @@ function loadDom() {
     nickInput = document.getElementById('nick');
     emailInput = document.getElementById('email');
     sizeInput = document.getElementById('size');
+    timeInput = document.getElementById('time');
     formElement = document.getElementById('formElement');
     error = document.getElementById('error');
 
