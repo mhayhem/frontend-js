@@ -79,12 +79,19 @@ width: 230px;
 }
 .green {
     background-color: #7ac943;
+    transition: background-color, 0.4s;
 }
 .red {
     background-color: #fd0c49;
+    transition: background-color, 0.4s;
 }
 .blue {
     background-color: #2496cf;
+    transition: background-color, 0.4s;
+}
+.endGameColor {
+    background-color: #263238;
+    transition: background-color, 0.4s;
 }
 
 /* IDs selectors */
@@ -111,10 +118,9 @@ width: 230px;
     z-index: 1;
     display: flex;
     width: 500px;
-    min-height: 40px;
+    min-height: 400px;
     justify-content: center;
-    align-items: center;
-    background-color: #263238;
+    align-items: center;    
     border: 1px solid #ced4ca;
     border-radius: 5px 5px 0px 0px;
 }

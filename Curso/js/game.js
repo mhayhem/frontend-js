@@ -50,10 +50,11 @@ function displayGameLayout() {
     // change margin-top to gameTitle when de size are 6x6
     if (size == '6') {
         document.getElementById('gameTitle').style.marginTop = '450px';
+        document.getElementById('endGame').style.minHeight = '450px'
     }
 }
 /**
- * Description
+ * Description  
  * catch the mouse down event
  */
 function scheduleGameEvents() {
@@ -205,6 +206,7 @@ function countDown() {
         }
         document.removeEventListener('mouseup', endMarking);
         // change z-index from panels
+        document.getElementById('endGame').classList.add('endGameColor');
         document.getElementById('endGame').style.zIndex = '2';
         document.getElementById('game').style.zIndex = '1';
         document.getElementById('newGame').addEventListener('click', (e) => location.reload());
